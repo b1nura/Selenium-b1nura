@@ -87,7 +87,7 @@ namespace Selenium_Random_Car
                 var drpSeriesSelectObj = new SelectElement(drpSeries);
                 drpSeriesSelectObj.SelectByIndex(randomOptionSeries);
 
-                IWebElement drpVariant = driver.FindElement(By.Id("ddlJatoSeries"));
+                IWebElement drpVariant = driver.FindElement(By.Id("ddlJatoVariants"));
                 int numofOptionsVariant = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpVariant);
                 int randomOptionVariant = RandomNum.GetRandomNumber(numofOptionsVariant);
                 var drpVariantSelectObj = new SelectElement(drpVariant);
@@ -150,7 +150,7 @@ namespace Selenium_Random_Car
                 var drpSeriesSelectObj = new SelectElement(drpSeries);
                 drpSeriesSelectObj.SelectByIndex(randomOptionSeries);
 
-                IWebElement drpVariant = driver.FindElement(By.Id("ddlJatoSeries"));
+                IWebElement drpVariant = driver.FindElement(By.Id("ddlJatoVariants"));
                 int numofOptionsVariant = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpVariant);
                 int randomOptionVariant = RandomNum.GetRandomNumber(numofOptionsVariant);
                 var drpVariantSelectObj = new SelectElement(drpVariant);
