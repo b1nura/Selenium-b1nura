@@ -69,10 +69,17 @@ namespace Selenium_Random_Car
                 drpMakeSelectObj.SelectByText(BrandOfCar);
 
                 IWebElement drpModel = driver.FindElement(By.Id("ddlJatoModels"));
-                int numofOptions = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpModel);
-                int randomOption = RandomNum.GetRandomNumber(numofOptions);
+                int numofOptionsModel = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpModel);
+                int randomOptionModel = RandomNum.GetRandomNumber(numofOptionsModel);
                 var drpModelSelectObj = new SelectElement(drpModel);
-                drpModelSelectObj.SelectByIndex(randomOption);
+                drpModelSelectObj.SelectByIndex(randomOptionModel);
+
+
+                IWebElement drpYear = driver.FindElement(By.Id("ddlJatoYear"));
+                int numofOptionsYear = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpYear);
+                int randomOptionYear = RandomNum.GetRandomNumber(numofOptionsYear);
+                var drpYearSelectObj = new SelectElement(drpYear);
+                drpYearSelectObj.SelectByIndex(randomOptionYear);
 
             }
             else if (UsedOrNewCar == "used")
@@ -111,12 +118,18 @@ namespace Selenium_Random_Car
                 drpMakeSelectObj.SelectByText(BrandOfCar);
 
                 IWebElement drpModel = driver.FindElement(By.Id("ddlJatoModels"));
-                int numofOptions = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpModel);
-                int randomOption = RandomNum.GetRandomNumber(numofOptions);
+                int numofOptionsModel = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpModel);
+                int randomOptionModel = RandomNum.GetRandomNumber(numofOptionsModel);
                 var drpModelSelectObj = new SelectElement(drpModel);
-                drpModelSelectObj.SelectByIndex(randomOption);
+                drpModelSelectObj.SelectByIndex(randomOptionModel);
 
 
+
+                IWebElement drpYear = driver.FindElement(By.Id("ddlJatoYear"));
+                int numofOptionsYear = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpYear);
+                int randomOptionYear = RandomNum.GetRandomNumber(numofOptionsYear);
+                var drpYearSelectObj = new SelectElement(drpYear);
+                drpYearSelectObj.SelectByIndex(randomOptionYear);
             }
             else
             {
