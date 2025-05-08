@@ -12,7 +12,7 @@ namespace Selenium_Random_Car.Helpers
         public static int GetRandomNumber(int num)
         {
             Random random = new Random();
-            int newRandomNumber = random.Next(0, num);
+            int newRandomNumber = random.Next(1, num);
             return newRandomNumber;
 
         }

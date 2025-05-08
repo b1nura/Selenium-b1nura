@@ -68,7 +68,11 @@ namespace Selenium_Random_Car
                 var drpMakeSelectObj = new SelectElement(drpMake);
                 drpMakeSelectObj.SelectByText(BrandOfCar);
 
-
+                IWebElement drpModel = driver.FindElement(By.Id("ddlJatoModels"));
+                int numofOptions = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpModel);
+                int randomOption = RandomNum.GetRandomNumber(numofOptions);
+                var drpModelSelectObj = new SelectElement(drpModel);
+                drpModelSelectObj.SelectByIndex(randomOption);
 
             }
             else if (UsedOrNewCar == "used")
@@ -105,6 +109,13 @@ namespace Selenium_Random_Car
                 IWebElement drpMake = driver.FindElement(By.Id("ddlJatoMakes"));
                 var drpMakeSelectObj = new SelectElement(drpMake);
                 drpMakeSelectObj.SelectByText(BrandOfCar);
+
+                IWebElement drpModel = driver.FindElement(By.Id("ddlJatoModels"));
+                int numofOptions = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpModel);
+                int randomOption = RandomNum.GetRandomNumber(numofOptions);
+                var drpModelSelectObj = new SelectElement(drpModel);
+                drpModelSelectObj.SelectByIndex(randomOption);
+
 
             }
             else
