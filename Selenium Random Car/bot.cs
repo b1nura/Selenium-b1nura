@@ -65,7 +65,6 @@ namespace Selenium_Random_Car
                 drpMakeSelectObj.SelectByText(BrandOfCar);
 
 
-
             }
             else if (UsedOrNewCar == "used")
             {
