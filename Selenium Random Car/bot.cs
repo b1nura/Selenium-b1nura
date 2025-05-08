@@ -3,6 +3,7 @@ using System.Net.WebSockets;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using Selenium_Random_Car.Helpers;
 
 namespace Selenium_Random_Car
 {
@@ -10,6 +11,11 @@ namespace Selenium_Random_Car
     {
         public static void Main(string[] args)
         {
+            RandomNum RandomNum = new RandomNum();
+            NumberOfOptionsInDrpDown OptDrp = new NumberOfOptionsInDrpDown();
+
+
+
             Console.WriteLine("Welcome to Binura's random car picker!");
             Console.WriteLine();
             Console.WriteLine("Perfect if you don't know which model to choose! ;)");
@@ -26,8 +32,6 @@ namespace Selenium_Random_Car
             Console.WriteLine();
             Console.WriteLine("Okay!, time to search!");
             Console.WriteLine();
-
-
 
             if (UsedOrNewCar == "new")
             {
@@ -63,6 +67,7 @@ namespace Selenium_Random_Car
                 IWebElement drpMake = driver.FindElement(By.Id("ddlJatoMakes"));
                 var drpMakeSelectObj = new SelectElement(drpMake);
                 drpMakeSelectObj.SelectByText(BrandOfCar);
+
 
 
             }

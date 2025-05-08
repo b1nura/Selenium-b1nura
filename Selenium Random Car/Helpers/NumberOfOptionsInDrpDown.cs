@@ -10,16 +10,12 @@ namespace Selenium_Random_Car.Helpers
 {
     public class NumberOfOptionsInDrpDown
     {
-        public static int numInDrpDown(IWebElement element)
+        public static int GetDropDownElementCount(IWebElement element)
         {
             SelectElement select = new SelectElement(element);
             var elementList = select.Options;
-            IList<string> optionStrings = new List<string>();
-            for (int i = 0; i < elementList.Count; i++)
-            {
-                optionStrings.Add(elementList[i].Text);
-            }
-            return optionStrings.Count;
+
+            return elementList.Count;
         }
     }
 }

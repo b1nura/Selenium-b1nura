@@ -9,7 +9,7 @@ namespace Selenium_Random_Car.Helpers
 {
     public class RandomNum
     {
-        public static int RandomNumber(int num)
+        public static int GetRandomNumber(int num)
         {
             Random random = new Random();
             int newRandomNumber = random.Next(0, num);
