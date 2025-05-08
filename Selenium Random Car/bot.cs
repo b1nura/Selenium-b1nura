@@ -81,6 +81,18 @@ namespace Selenium_Random_Car
                 var drpYearSelectObj = new SelectElement(drpYear);
                 drpYearSelectObj.SelectByIndex(randomOptionYear);
 
+                IWebElement drpSeries = driver.FindElement(By.Id("ddlJatoSeries"));
+                int numofOptionsSeries = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpSeries);
+                int randomOptionSeries = RandomNum.GetRandomNumber(numofOptionsSeries);
+                var drpSeriesSelectObj = new SelectElement(drpSeries);
+                drpSeriesSelectObj.SelectByIndex(randomOptionSeries);
+
+                IWebElement drpVariant = driver.FindElement(By.Id("ddlJatoSeries"));
+                int numofOptionsVariant = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpVariant);
+                int randomOptionVariant = RandomNum.GetRandomNumber(numofOptionsVariant);
+                var drpVariantSelectObj = new SelectElement(drpVariant);
+                drpVariantSelectObj.SelectByIndex(randomOptionVariant);
+
             }
             else if (UsedOrNewCar == "used")
             {
@@ -130,6 +142,19 @@ namespace Selenium_Random_Car
                 int randomOptionYear = RandomNum.GetRandomNumber(numofOptionsYear);
                 var drpYearSelectObj = new SelectElement(drpYear);
                 drpYearSelectObj.SelectByIndex(randomOptionYear);
+
+
+                IWebElement drpSeries = driver.FindElement(By.Id("ddlJatoSeries"));
+                int numofOptionsSeries = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpSeries);
+                int randomOptionSeries = RandomNum.GetRandomNumber(numofOptionsSeries);
+                var drpSeriesSelectObj = new SelectElement(drpSeries);
+                drpSeriesSelectObj.SelectByIndex(randomOptionSeries);
+
+                IWebElement drpVariant = driver.FindElement(By.Id("ddlJatoSeries"));
+                int numofOptionsVariant = NumberOfOptionsInDrpDown.GetDropDownElementCount(drpVariant);
+                int randomOptionVariant = RandomNum.GetRandomNumber(numofOptionsVariant);
+                var drpVariantSelectObj = new SelectElement(drpVariant);
+                drpVariantSelectObj.SelectByIndex(randomOptionVariant);
             }
             else
             {
