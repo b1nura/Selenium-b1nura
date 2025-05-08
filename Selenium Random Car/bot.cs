@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Net.WebSockets;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -9,39 +10,103 @@ namespace Selenium_Random_Car
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to Binura's random car picker!");
+            Console.WriteLine();
+            Console.WriteLine("Perfect if you don't know which model to choose! ;)");
+            Console.WriteLine();
             string metroUserName = "bwanigabaduge";
-            string metroPassword = "dummy";
+            string metroPassword = "Metro@123";
             Console.WriteLine("Do you want a new/used car?");
-            string oldOrNewCar = Console.ReadLine();
-            string OldOrNewCar = oldOrNewCar.ToLower().Trim();
+            string usedOrNewCar = Console.ReadLine();
+            string UsedOrNewCar = usedOrNewCar.ToLower().Trim();
+            Console.WriteLine();
+            Console.WriteLine("What brand is your required car?");
+            string brandOfCar = Console.ReadLine();
+            string BrandOfCar = brandOfCar.ToUpper().Trim();
+            Console.WriteLine();
+            Console.WriteLine("Okay!, time to search!");
+            Console.WriteLine();
 
-            IWebDriver driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Navigate().GoToUrl("dummy");
 
-            IWebElement txtUserName = driver.FindElement(By.Id("username"));
-            txtUserName.SendKeys(metroUserName);
 
-            IWebElement txtPassword = driver.FindElement(By.Id("passwd"));
-            txtPassword.SendKeys(metroPassword + Keys.Enter);
-
-            IWebElement btnVehicleSearch = driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div/ul/li[11]/a"));
-            btnVehicleSearch.Click();
-
-            IWebElement drpAssetType = driver.FindElement(By.Id("ddlAssetType"));
-            var selectObj = new SelectElement(drpAssetType);
-            selectObj.SelectByIndex(1);
-
-            if (OldOrNewCar == "new")
+            if (UsedOrNewCar == "new")
             {
-                IWebElement btnnewCar = driver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/ng-view/div/div[2]/main/div/div[1]/div[2]/div[1]/div[1]/form/div/jato-search/ng-form/div[4]/div/div/label[1]/input"));
-                btnnewCar.Click();
+                IWebDriver driver = new ChromeDriver();
+                driver.Manage().Window.Maximize();
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                driver.Navigate().GoToUrl("https://systest-metro-broker-portal.systest.metrofin.com.au/");
+
+                IWebElement txtUserName = driver.FindElement(By.Id("username"));
+                txtUserName.SendKeys(metroUserName);
+
+                IWebElement txtPassword = driver.FindElement(By.Id("passwd"));
+                txtPassword.SendKeys(metroPassword + Keys.Enter);
+
+                IWebElement btnVehicleSearch = driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div/ul/li[11]/a"));
+                btnVehicleSearch.Click();
+
+                IWebElement drpAssetType = driver.FindElement(By.Id("ddlAssetType"));
+                var drpAssetTypeSelectObj = new SelectElement(drpAssetType);
+                drpAssetTypeSelectObj.SelectByIndex(1);
+
+                if (UsedOrNewCar == "new")
+                {
+                    IWebElement btnnewCar = driver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/ng-view/div/div[2]/main/div/div[1]/div[2]/div[1]/div[1]/form/div/jato-search/ng-form/div[4]/div/div/label[1]/input"));
+                    btnnewCar.Click();
+                }
+                else
+                {
+                    IWebElement btnoldCar = driver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/ng-view/div/div[2]/main/div/div[1]/div[2]/div[1]/div[1]/form/div/jato-search/ng-form/div[4]/div/div/label[2]/input"));
+                    btnoldCar.Click();
+                }
+
+                IWebElement drpMake = driver.FindElement(By.Id("ddlJatoMakes"));
+                var drpMakeSelectObj = new SelectElement(drpMake);
+                drpMakeSelectObj.SelectByText(BrandOfCar);
+
+
+
+            }
+            else if (UsedOrNewCar == "used")
+            {
+                IWebDriver driver = new ChromeDriver();
+                driver.Manage().Window.Maximize();
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                driver.Navigate().GoToUrl("https://systest-metro-broker-portal.systest.metrofin.com.au/");
+
+                IWebElement txtUserName = driver.FindElement(By.Id("username"));
+                txtUserName.SendKeys(metroUserName);
+
+                IWebElement txtPassword = driver.FindElement(By.Id("passwd"));
+                txtPassword.SendKeys(metroPassword + Keys.Enter);
+
+                IWebElement btnVehicleSearch = driver.FindElement(By.XPath("/html/body/div[1]/div[1]/div/ul/li[11]/a"));
+                btnVehicleSearch.Click();
+
+                IWebElement drpAssetType = driver.FindElement(By.Id("ddlAssetType"));
+                var selectObj = new SelectElement(drpAssetType);
+                selectObj.SelectByIndex(1);
+
+                if (UsedOrNewCar == "new")
+                {
+                    IWebElement btnnewCar = driver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/ng-view/div/div[2]/main/div/div[1]/div[2]/div[1]/div[1]/form/div/jato-search/ng-form/div[4]/div/div/label[1]/input"));
+                    btnnewCar.Click();
+                }
+                else
+                {
+                    IWebElement btnoldCar = driver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/ng-view/div/div[2]/main/div/div[1]/div[2]/div[1]/div[1]/form/div/jato-search/ng-form/div[4]/div/div/label[2]/input"));
+                    btnoldCar.Click();
+                }
+
+                IWebElement drpMake = driver.FindElement(By.Id("ddlJatoMakes"));
+                var drpMakeSelectObj = new SelectElement(drpMake);
+                drpMakeSelectObj.SelectByText(BrandOfCar);
+
             }
             else
             {
-                IWebElement btnoldCar = driver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/ng-view/div/div[2]/main/div/div[1]/div[2]/div[1]/div[1]/form/div/jato-search/ng-form/div[4]/div/div/label[2]/input"));
-                btnoldCar.Click();
+                Console.WriteLine("Please rerun the code and put in a proper input! :(");
+                Console.ReadKey();
             }
 
         }
